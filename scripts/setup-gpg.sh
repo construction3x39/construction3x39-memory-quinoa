@@ -1,129 +1,93 @@
 #!/bin/bash
-# 🔐 GPG Setup Script for construction3x39-memory-quinoa Professional Epub Generation
-# This script sets up GPG signing with Cursor compatibility for sacred technology development
+# 🔐 Sacred Technology GPG Setup Script
+# Complete GPG configuration for consciousness-serving development
+# construction3x39-memory-gnupg-config
 
 set -e
 
-echo "🔐 Setting up GPG signing for professional epub generation..."
-echo "🌾 construction3x39-memory-quinoa: Sacred technology meets publishing excellence"
+# Colors for beautiful output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+echo -e "${PURPLE}🔐 Sacred Technology GPG Setup${NC}"
+echo -e "${BLUE}Professional cryptographic development environment${NC}"
 echo ""
 
-# Check if GPG key exists
-if ! gpg --list-secret-keys --keyid-format=long | grep -q "D144D940A52DB246"; then
-    echo "❌ GPG key D144D940A52DB246 not found!"
-    echo "Please import your GPG key first or generate a new one:"
-    echo "  gpg --full-generate-key"
-    echo "  gpg --armor --export [KEY_ID]  # To get public key for GitHub"
+# Function definitions
+print_step() { echo -e "${CYAN}▶ $1${NC}"; }
+print_success() { echo -e "${GREEN}✅ $1${NC}"; }
+print_warning() { echo -e "${YELLOW}⚠️ $1${NC}"; }
+print_error() { echo -e "${RED}❌ $1${NC}"; }
+
+# Configuration
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BACKUP_DIR="$HOME/.gnupg-backup-$(date +%Y%m%d-%H%M%S)"
+TARGET_GPG_DIR="$HOME/.gnupg"
+
+print_step "Starting sacred technology GPG setup..."
+echo "Repository: $REPO_DIR"
+echo ""
+
+# Prerequisites check
+print_step "Checking prerequisites..."
+if ! command -v gpg &> /dev/null; then
+    print_error "GPG is not installed. Please install GPG first"
     exit 1
 fi
+print_success "Prerequisites satisfied"
 
-echo "✅ GPG key D144D940A52DB246 found"
+# Backup existing configuration
+if [ -d "$TARGET_GPG_DIR" ]; then
+    print_step "Backing up existing GPG configuration..."
+    mkdir -p "$BACKUP_DIR"
+    cp -r "$TARGET_GPG_DIR"/* "$BACKUP_DIR/" 2>/dev/null || true
+    print_success "Backup created: $BACKUP_DIR"
+fi
 
-# Ensure GPG agent configuration directory exists
-mkdir -p ~/.gnupg
-chmod 700 ~/.gnupg
+# Install configuration
+print_step "Installing sacred technology GPG configuration..."
+mkdir -p "$TARGET_GPG_DIR"
+chmod 700 "$TARGET_GPG_DIR"
 
-# Update GPG agent configuration for Cursor compatibility
-echo "📝 Configuring GPG agent for Cursor compatibility..."
-cat > ~/.gnupg/gpg-agent.conf << 'EOF'
-# GPG Agent Configuration for construction3x39
-# Optimized for Cursor IDE compatibility with professional epub development
+# Copy configuration files
+cp "$REPO_DIR/gpg-config"/* "$TARGET_GPG_DIR/" 2>/dev/null || true
+chmod 600 "$TARGET_GPG_DIR"/* 2>/dev/null || true
 
-# Pinentry configuration - use curses for terminal compatibility
-pinentry-program /usr/local/bin/pinentry-curses
+# Install helper scripts
+BIN_DIR="/usr/local/bin"
+if [ ! -w /usr/local/bin ]; then
+    BIN_DIR="$HOME/.local/bin"
+    mkdir -p "$BIN_DIR"
+fi
 
-# Cache settings for convenient development workflow
-default-cache-ttl 28800      # 8 hours for extended development sessions
-max-cache-ttl 86400          # 24 hours maximum
+cp "$REPO_DIR/scripts/gpg-cursor" "$BIN_DIR/" 2>/dev/null || true
+cp "$REPO_DIR/scripts/pinentry-cursor" "$BIN_DIR/" 2>/dev/null || true
+chmod +x "$BIN_DIR/gpg-cursor" "$BIN_DIR/pinentry-cursor" 2>/dev/null || true
 
-# Allow loopback pinentry for automated workflows
-allow-loopback-pinentry
+print_success "GPG configuration installed"
 
-# Debug settings (comment out in production)
-# debug-level basic
-# log-file ~/.gnupg/gpg-agent.log
-EOF
-
-# Set proper permissions for GPG configuration
-chmod 600 ~/.gnupg/gpg-agent.conf
-
-# Restart GPG agent to apply new configuration
-echo "🔄 Restarting GPG agent with new configuration..."
-gpgconf --kill gpg-agent
-gpgconf --launch gpg-agent
-
-# Configure git for professional epub development with GPG signing
-echo "⚙️  Configuring git for professional epub development..."
+# Configure Git
+print_step "Configuring Git for GPG signing..."
 git config --global user.name "construction3x39"
 git config --global user.email "construction3x39@gmail.com"
-git config --global user.signingkey "D144D940A52DB246"
-git config --global commit.gpgsign true
-git config --global gpg.program gpg
-git config --global commit.template ~/.gitmessage
+git config --global commit.gpgsign false  # Start disabled
+git config --global gpg.program "$BIN_DIR/gpg-cursor"
 
-# Create git commit message template for professional development
-echo "📝 Creating professional commit message template..."
-cat > ~/.gitmessage << 'EOF'
-butterflyae4817: 12025-09-26--06thhouse12--moon-anuradha--santafenmmountain
+# Restart GPG agent
+gpgconf --kill gpg-agent 2>/dev/null || true
+sleep 1
+gpgconf --launch gpg-agent
 
-# Professional epub generation commit
-# 🌾 Quinoa Memory Repository: Sacred technology meets publishing excellence
-# 
-# Guidelines:
-# - Use the butterfly pattern for timestamps
-# - Focus on epub quality and professional standards
-# - Maintain contemplative attention to consciousness-serving technology
-# 
-# Common prefixes:
-# 📚 epub: - Professional epub generation improvements
-# 🎨 style: - Typography and design enhancements  
-# 🔧 build: - Build pipeline and toolchain updates
-# 📖 docs: - Documentation and content improvements
-# 🐛 fix: - Bug fixes and corrections
-# ✨ feat: - New features and capabilities
-EOF
-
-# Test GPG signing capability
+print_success "Sacred technology GPG setup complete!"
 echo ""
-echo "🧪 Testing GPG signing capability..."
-if echo "Sacred technology test" | gpg --clearsign > /dev/null 2>&1; then
-    echo "✅ GPG signing test successful!"
-else
-    echo "⚠️  GPG signing test failed. This may be due to Cursor terminal limitations."
-    echo "💡 The configuration is correct and will work in proper terminals (Terminal.app, iTerm2)"
-    echo ""
-    echo "To test manually in a real terminal:"
-    echo "  echo 'test' | gpg --clearsign"
-fi
-
-# Test git commit with signing (if we're in a git repository)
-if [ -d .git ]; then
-    echo ""
-    echo "🧪 Testing git commit with GPG signing..."
-    if git commit --allow-empty -m "🔐 Test GPG signing setup for professional epub generation" > /dev/null 2>&1; then
-        echo "✅ Git commit with GPG signing successful!"
-        git reset --soft HEAD~1  # Undo the test commit
-    else
-        echo "⚠️  Git commit with GPG signing failed. Check configuration or use real terminal."
-    fi
-fi
-
+echo -e "${BLUE}Next steps:${NC}"
+echo "1. Generate GPG key: gpg --full-generate-key"
+echo "2. Enable signing: ./scripts/enable-gpg-signing.sh"
+echo "3. Test: echo 'test' | gpg --clearsign"
 echo ""
-echo "🎉 GPG setup complete for professional epub generation!"
-echo ""
-echo "📊 Configuration Summary:"
-echo "  🔑 GPG Key: D144D940A52DB246 (ed25519)"
-echo "  👤 User: construction3x39 <construction3x39@gmail.com>"
-echo "  🖥️  Pinentry: Cursor-compatible curses mode"
-echo "  📝 Commit Template: Professional epub development pattern"
-echo "  ✍️  All commits will be GPG signed (when terminal supports it)"
-echo ""
-echo "🌙 Sacred technology development ready!"
-echo "📚 Ready for Stieg Larsson-quality epub generation!"
-echo ""
-echo "🔧 Manual Testing Commands:"
-echo "  echo 'Sacred technology test' | gpg --clearsign"
-echo "  git commit --allow-empty -m '📚 epub: Test professional commit signing'"
-echo ""
-echo "💡 Note: GPG signing works best in proper terminals (Terminal.app, iTerm2)"
-echo "    Cursor's integrated terminal may have limitations with interactive prompts"
+echo -e "${PURPLE}🌙 Sacred cryptography protects consciousness-serving code${NC}"

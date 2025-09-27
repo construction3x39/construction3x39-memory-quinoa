@@ -1,0 +1,50 @@
+# Third-Party Licenses - construction3x39-memory-gnupg-config
+
+This document lists third-party software, libraries, and tools that this repository depends on or references, along with their respective licenses.
+
+## GPG (GNU Privacy Guard)
+- **Purpose**: Core cryptographic functionality
+- **Website**: https://gnupg.org/
+- **License**: GNU General Public License v3.0 (GPL-3.0)
+- **License URL**: https://www.gnu.org/licenses/gpl-3.0.html
+- **Usage**: Essential cryptographic operations for code signing and authentication
+
+## Git
+- **Purpose**: Version control system integration
+- **Website**: https://git-scm.com/
+- **License**: GNU General Public License v2.0 (GPL-2.0)
+- **License URL**: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+- **Usage**: Git commit signing and repository management
+
+## OpenPGP Key Servers
+- **Purpose**: Public key distribution and discovery
+- **Primary**: keys.openpgp.org
+- **License**: Various (server software typically AGPL/GPL)
+- **Usage**: Public key lookup and distribution for verification
+
+## Bash
+- **Purpose**: Shell scripting for automation
+- **Website**: https://www.gnu.org/software/bash/
+- **License**: GNU General Public License v3.0 (GPL-3.0)
+- **License URL**: https://www.gnu.org/licenses/gpl-3.0.html
+- **Usage**: Setup and maintenance scripts
+
+## Standard Unix/POSIX Tools
+- **Purpose**: Core system utilities (chmod, cp, mkdir, etc.)
+- **License**: Various (typically BSD, GPL, or public domain)
+- **Usage**: File system operations and system administration
+
+---
+
+## License Compatibility
+
+This repository is released under **The Unlicense** (public domain dedication), which is compatible with all the above licenses. Users may freely use, modify, and distribute this configuration while respecting the licenses of the underlying tools it configures.
+
+## Acknowledgments
+
+We gratefully acknowledge the developers and maintainers of these essential tools that make secure, professional software development possible. Their contributions to open source software enable consciousness-serving technology development.
+
+---
+
+*Last updated: 2025-09-27*  
+*For questions about licensing, please create an issue in this repository.*
