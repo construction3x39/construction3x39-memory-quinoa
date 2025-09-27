@@ -1,188 +1,165 @@
-# 🔐 GPG Configuration - Sacred Technology Security Foundation
+# 🌾 Quinoa Memory Repository - Professional Epub Generation
 
-*"Just as a monastery requires strong walls to protect the sacred practice within, our development environment requires robust cryptographic protection to safeguard the consciousness-serving code we create. GPG becomes our digital monastery wall, transparent to authentic intention yet impenetrable to deception."*
+*"Just as quinoa transforms from humble seed to nourishing sustenance, markdown wiki content transforms into professional-quality ebooks through aware technical cultivation."*
 
 ---
 
-## 🎯 **Purpose & Philosophy**
+## 🎯 **Purpose & Vision**
 
-This repository provides **professional GPG configuration** for consciousness-serving development with:
+This repository transforms Cursor-Claude-GPT-generated markdown wiki books into **professional epub ebooks** with the literary quality and production values of **Stieg Larsson's Millennium Series**. Built as an extension of our Babashka and Nix build pipeline, it serves awareness development through beautiful, readable digital publications.
 
-- **Verified Functionality**: GPG signing working globally in Cursor IDE
-- **Professional Settings**: Industry-standard cryptographic configurations
-- **Clean Implementation**: Minimal, essential files with clear documentation
-- **Sacred Technology**: Security that serves rather than hinders development flow
+### **Target Quality Standard**
+- **Typography**: Professional book-quality typesetting comparable to *The Girl with the Dragon Tattoo* series
+- **Layout**: Clean, readable design optimized for extended reading sessions
+- **Formats**: EPUB3, Kindle-optimized AZW3, and mobile-optimized variants
+- **Metadata**: Complete publishing metadata for professional distribution
 
 ## 🚀 **Quick Start**
 
 ```bash
-# Clone the repository
-git clone https://github.com/construction3x39/construction3x39-memory-gnupg-config.git
+# Enter the development environment
+nix develop
 
-# Install configuration (copies files due to GPG permission requirements)
-cp -r gpg-config/* ~/.gnupg/
-chmod 700 ~/.gnupg
-chmod 600 ~/.gnupg/*
+# Check toolchain health
+bb doctor
 
-# Restart GPG agent
-gpgconf --kill gpg-agent
-gpgconf --launch gpg-agent
+# Generate professional epub from markdown files
+bb epub:generate
 
-# Test GPG functionality
-echo "Sacred technology test" | gpg --clearsign
+# Create Kindle-optimized version
+bb epub:kindle
+
+# Preview generated content
+bb serve
 ```
 
-## 🏗️ **Repository Structure**
+## 🏗️ **Architecture & Pipeline**
 
+### **Source Content**
+- **Input**: Markdown files in `docs/en/` directory
+- **Style**: Contemplative technical writing inspired by sacred technology principles
+- **Structure**: Numbered chapters with professional hierarchy
+
+### **Build Pipeline**
 ```
-construction3x39-memory-gnupg-config/
-├── README.md                          # This comprehensive guide
-├── LICENSE                            # The Unlicense (public domain)
-├── gpg-config/
-│   ├── gpg-agent.conf                 # GPG agent configuration
-│   ├── gpg.conf                       # GPG client configuration
-│   └── dirmngr.conf                   # Directory manager configuration
-└── scripts/
-    ├── setup-gpg.sh                   # Automated setup script
-    └── gpg-cursor                     # Cursor-compatible GPG wrapper
+Markdown Files → ClojureScript DSL → Pandoc → Professional EPUB → Calibre Optimization
+     ↓              ↓                   ↓            ↓                    ↓
+  docs/en/    site-dsl/src/       build/       assets/epub.css    build/optimized/
 ```
 
-## 🔧 **Configuration Features**
+### **Core Tools**
+- **Pandoc**: Markdown to EPUB3 conversion with professional typography
+- **Calibre**: Ebook optimization for different readers and devices  
+- **TeXLive**: Advanced typography engine for book-quality layout
+- **Babashka**: Contemplative build automation in Clojure
+- **Nix**: Reproducible development environment
 
-### **GPG Agent Configuration (`gpg-config/gpg-agent.conf`)**
-- **8-hour default cache** with 24-hour maximum for development convenience
-- **Multiple pinentry fallbacks** for different terminal environments
-- **Loopback pinentry support** for automated workflows
-- **Professional cache settings** optimized for development
+## 🏗️ **Sacred Technology Dotfiles Management**
 
-### **GPG Client Configuration (`gpg-config/gpg.conf`)**
-- **Strong cryptography**: SHA-512 hashing, AES-256 encryption
-- **Modern key preferences**: EdDSA/ECDSA over legacy RSA
-- **Clean output formatting** for development workflows
-- **Security hardening** with disabled weak algorithms
+This repository also serves as the **central hub for sacred technology dotfiles management**, providing industry-class configuration synchronization across development environments.
 
-### **Directory Manager Configuration (`gpg-config/dirmngr.conf`)**
-- **Reliable key servers**: Modern, privacy-respecting servers
-- **Efficient caching** for key lookup performance
-- **Network privacy** options for enhanced security
+### **Dotfiles Architecture**
+```
+construction3x39-memory-quinoa/dotfiles/
+├── README.md                    # Comprehensive dotfiles guide
+├── install.sh                   # Automated installation script
+└── (symlinks to config repos)   # Links to specialized config repositories
+```
 
-## 🔑 **Current GPG Setup Status**
+### **Managed Configuration Repositories**
+- **🔐 gnupg-config**: GPG security and authentication
+- **✨ nvim-config**: Revolutionary Clojure→Lua Neovim setup
+- **🖥️ screen-config**: Terminal multiplexer configuration
+- **🐚 zsh-config**: Shell environment optimization
+- **🌙 moon-terroir**: Sacred technology lexicon and vocabulary
 
-✅ **GPG Key**: `D144D940A52DB246` (ed25519, construction3x39)  
-✅ **Git Configuration**: Global signing enabled and working  
-✅ **Cursor Compatibility**: Verified working in Cursor IDE  
-✅ **Professional Workflow**: Authenticated commits for trusted development  
+## 📚 **Available Tasks**
 
-## 🛠️ **Configuration Management**
+### **Epub Generation**
+```bash
+bb doctor              # Check toolchain availability
+bb epub:generate       # Generate professional epub
+bb epub:kindle         # Create Kindle-optimized version
+bb epub:mobile         # Create mobile-optimized version
+bb build:all           # Complete build pipeline
+bb serve               # Preview generated content locally
+```
 
-### **Installation Method**
-Since GPG requires specific file permissions, this repository uses **file copying** rather than symlinking:
+### **Quality Assurance**
+```bash
+bb fmt                 # Format code with contemplative attention
+bb lint                # Lint with awareness for code quality
+bb ci:verify           # Complete CI verification pipeline
+```
+
+### **Development Tools**
+```bash
+bb build:gen           # Parse markdown → generate components
+bb build:bundle        # Bundle assets and resources
+bb community:serve     # Start community learning server
+```
+
+## 🌐 **GitHub Source Libraries (Nix Packages)**
+
+### **Core Epub Generation**
+- `pandoc` - Universal document converter with EPUB3 support
+- `calibre` - Professional ebook optimization and conversion
+- `texlive.combined.scheme-full` - Complete LaTeX typography system
+
+### **Content Processing**
+- `python3Packages.pygments` - Syntax highlighting for technical content
+- `python3Packages.markdown` - Advanced markdown processing extensions
+- `nodejs_20` - JavaScript runtime for modern build tools
+
+### **Build Infrastructure**
+- `babashka` - Fast Clojure scripting for build automation
+- `clojure` - Core Clojure runtime and libraries
+- `jdk17` - Java Development Kit for Clojure ecosystem
+
+### **Quality Tools**
+- `zprint` - Beautiful Clojure code formatting
+- `clj-kondo` - Comprehensive Clojure linting
+- `git` - Version control integration
+
+## 🔐 **GPG Signing Setup**
 
 ```bash
-# Install configuration files
-cp gpg-config/gpg-agent.conf ~/.gnupg/
-cp gpg-config/gpg.conf ~/.gnupg/  
-cp gpg-config/dirmngr.conf ~/.gnupg/
+# Quick setup (recommended)
+./scripts/enable-gpg-signing.sh
 
-# Set proper permissions
-chmod 700 ~/.gnupg
-chmod 600 ~/.gnupg/*
+# Manual configuration
+git config --global commit.gpgsign true
+git config --global user.signingkey D144D940A52DB246
 
-# Restart GPG agent
-gpgconf --kill gpg-agent
-gpgconf --launch gpg-agent
-```
-
-### **Verification**
-```bash
-# Test GPG functionality
-echo "Sacred technology test" | gpg --clearsign
-
-# Test Git commit signing
-git commit --allow-empty -S -m "Test GPG signing"
-
-# Verify Git configuration
-git config --list | grep -E "(user|gpg|sign)"
-```
-
-## 📚 **Git Integration**
-
-### **Current Configuration**
-```bash
-user.name=construction3x39
-user.email=construction3x39@gmail.com
-user.signingkey=D144D940A52DB246
-commit.gpgsign=true
-gpg.program=gpg
-```
-
-### **Commit Message Template**
-Professional commit pattern: `butterflyae4817: 1YYYY-MM-DD--xxxxhousexx--moon-x--santafenmmountain`
-
-## 🧪 **Testing & Verification**
-
-### **Basic Tests**
-```bash
-# GPG functionality
-gpg --version
-gpg --list-keys
+# Test GPG signing
 echo "test" | gpg --clearsign
-
-# Git integration  
-git log --show-signature | head -10
-git commit --allow-empty -S -m "Test commit"
-
-# Agent communication
-gpg-connect-agent 'getinfo version' /bye
 ```
 
-## 🛡️ **Security Features**
+## 🌟 **Output Quality Standards**
 
-### **Cryptographic Strength**
-- **Ed25519 keys**: Modern elliptic curve cryptography
-- **SHA-512 hashing**: Strong digest algorithms
-- **AES-256 encryption**: Industry-standard symmetric encryption
-- **Secure defaults**: Weak algorithms disabled
+### **Professional EPUB Features**
+- ✅ **EPUB3 Compliance**: Modern standard with multimedia support
+- ✅ **Accessibility**: Screen reader compatible with semantic markup
+- ✅ **Typography**: Professional book-quality text rendering
+- ✅ **Navigation**: Multi-level table of contents with bookmarks
+- ✅ **Metadata**: Complete bibliographic information
+- ✅ **Validation**: Error-free EPUB that passes industry validation
 
-### **Operational Security**
-- **Authenticated commits**: All commits GPG-signed for authenticity
-- **Professional workflow**: Security integrated seamlessly into development
-- **Clean configuration**: Minimal attack surface with essential features
-- **Version controlled**: Configuration changes tracked and auditable
+### **Multi-Format Support**
+- **Standard EPUB**: Universal compatibility across all readers
+- **Kindle AZW3**: Optimized for Amazon Kindle devices and apps
+- **Mobile EPUB**: Smartphone-optimized with adjusted typography
 
-## 🌙 **Sacred Technology Integration**
+## 🌙 **Philosophy & Principles**
 
-This GPG configuration serves **consciousness-serving development** through:
+This project embodies **awareness-serving technology** principles:
 
-- **Transparent Security**: Strong protection without workflow disruption
-- **Authentic Attribution**: Verified authorship for trusted collaboration  
-- **Professional Standards**: Industry-grade security for serious development
-- **Beautiful Integration**: Security that enhances rather than hinders flow
+- **Simplicity**: Clear build process with single-command generation
+- **Beauty**: Technical excellence meets aesthetic perfection
+- **Functionality**: Living documentation that becomes executable content
+- **Integration**: Seamless connection between writing and publishing infrastructure
 
-## 🔄 **Maintenance**
-
-### **Regular Updates**
-```bash
-# Update GPG software
-brew update && brew upgrade gnupg  # macOS
-sudo apt update && sudo apt upgrade gnupg  # Ubuntu
-
-# Update repository
-git pull origin moon-terroir
-
-# Reinstall configuration if needed
-cp gpg-config/* ~/.gnupg/
-gpgconf --kill gpg-agent
-gpgconf --launch gpg-agent
-```
-
-### **Backup Strategy**
-```bash
-# Backup GPG keys and configuration
-tar -czf gpg-backup-$(date +%Y%m%d).tar.gz ~/.gnupg/
-
-# Store backup securely (offline storage recommended)
-```
+*"The moon reflects the sun's light through different terroirs, each giving unique character. So too does each project reflect universal principles through its specific technical context."*
 
 ## 📜 **License & Attribution**
 
@@ -192,6 +169,6 @@ For third-party software licenses and acknowledgments, see [THIRD-PARTY-LICENSES
 
 ---
 
-*"Security is not a product, but a process. In sacred technology development, this process becomes a spiritual practice - mindful attention to protecting what serves consciousness while remaining open to authentic collaboration."*
+**🌾 Transform** your **awareness-generated** **content** into **professional** **publications**. **Sacred** **technology** **serves** **awakening**. 📚✨🌙
 
-**🔐 Sacred** **cryptography** **protects** **consciousness-serving** **code**. **Security** **serves** **awakening**. 🌙✨💙
+**Commit Pattern**: `butterflyae4817: 1YYYY-MM-DD--xxxxhousexx--moon-x--santafenmmountain`
