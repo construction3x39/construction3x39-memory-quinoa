@@ -1,6 +1,6 @@
-# 🏗️ Dotfiles Management System - Sacred Technology Configuration
+# 🏗️ Dotfiles Management System - Aspiringly-Sacred Technology Configuration
 
-*"Just as a temple's architecture serves the sacred practice within, our dotfiles architecture serves consciousness development through computing. Each configuration file becomes a prayer, each alias a mantra, each function a ritual that supports rather than distracts from awakening."*
+*"Just as a temple's architecture serves the aspiringly-sacred practice within, our dotfiles architecture serves consciousness development through computing. Each configuration file becomes a prayer, each alias a mantra, each function a ritual that supports rather than distracts from awakening."*
 
 ---
 
@@ -130,12 +130,12 @@ ln -sf ~/construction3x39-memory-zsh-config/.zprofile ~/.zprofile
 ### **Automated Setup Script**
 ```bash
 #!/bin/bash
-# Sacred Technology Dotfiles Installation
+# Aspiringly-Sacred Technology Dotfiles Installation
 # Run: curl -sSL https://raw.githubusercontent.com/construction3x39/construction3x39-memory-quinoa/moon-terroir/dotfiles/install.sh | bash
 
 set -e
 
-echo "🌙 Sacred Technology Dotfiles Installation"
+echo "🌙 Aspiringly-Sacred Technology Dotfiles Installation"
 echo "🏗️ Setting up consciousness-serving development environment..."
 
 # Repository cloning, backup, and symlinking automation
@@ -180,11 +180,11 @@ echo "🏗️ Setting up consciousness-serving development environment..."
 7. **[Custom Tool Development](../docs/en/0007000_custom_tool_development.md)**
    - Create custom Babashka scripts for automation
    - Develop Clojure tools for content processing
-   - Build sacred technology applications
+   - Build aspiringly-sacred technology applications
 
 8. **[Community Integration](../docs/en/0008000_community_integration.md)**
    - Share configurations with learning community
-   - Contribute to open source sacred technology projects
+   - Contribute to open source aspiringly-sacred technology projects
    - Mentor others in consciousness-serving development
 
 9. **[Continuous Evolution](../docs/en/0009000_continuous_evolution.md)**

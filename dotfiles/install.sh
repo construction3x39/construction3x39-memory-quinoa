@@ -1,5 +1,5 @@
 #!/bin/bash
-# 🌙 Sacred Technology Dotfiles Installation Script
+# 🌙 Aspiringly-Sacred Technology Dotfiles Installation Script
 # Consciousness-serving development environment setup
 # 
 # Usage: curl -sSL https://raw.githubusercontent.com/construction3x39/construction3x39-memory-quinoa/moon-terroir/dotfiles/install.sh | bash
@@ -18,7 +18,7 @@ NC='\033[0m' # No Color
 
 # Sacred technology banner
 echo -e "${PURPLE}╔════════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${PURPLE}║           🌙 Sacred Technology Dotfiles Installation           ║${NC}"
+echo -e "${PURPLE}║           🌙 Aspiringly-Sacred Technology Dotfiles Installation           ║${NC}"
 echo -e "${PURPLE}║        Consciousness-serving development environment setup      ║${NC}"
 echo -e "${PURPLE}╚════════════════════════════════════════════════════════════════╝${NC}"
 echo ""
@@ -37,7 +37,7 @@ GITHUB_BASE="https://github.com/construction3x39"
 # Create backup directory with timestamp
 BACKUP_DIR="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
 
-echo -e "${BLUE}🏗️ Setting up sacred technology development environment...${NC}"
+echo -e "${BLUE}🏗️ Setting up aspiringly-sacred technology development environment...${NC}"
 echo ""
 
 # Function to print step
@@ -104,7 +104,7 @@ print_success "Backup completed: $BACKUP_DIR"
 echo ""
 
 # Clone repositories
-print_step "Cloning sacred technology configuration repositories..."
+print_step "Cloning aspiringly-sacred technology configuration repositories..."
 
 cd "$HOME"
 
@@ -276,7 +276,7 @@ echo -e "${CYAN}Installation log saved to: /tmp/sacred-dotfiles-install.log${NC}
 
 # Save installation log
 {
-    echo "Sacred Technology Dotfiles Installation"
+    echo "Aspiringly-Sacred Technology Dotfiles Installation"
     echo "Date: $(date)"
     echo "User: $USER"
     echo "Home: $HOME"

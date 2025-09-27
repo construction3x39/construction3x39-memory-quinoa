@@ -1,14 +1,14 @@
 #!/usr/bin/env bb
-(println "🌙 Aspiringly-Sacred Technology Updater")
+(println "🌙 Aspiringly-Aspiringly-Sacred Technology Updater")
 (require (quote [clojure.string :as str]))
 (defn update-file [path]
   (try
     (let [content (slurp path)
           updated (-> content
-                      (str/replace "Sacred Technology" "Aspiringly-Sacred Technology")
-                      (str/replace "sacred technology" "aspiringly-sacred technology")
-                      (str/replace "Sacred computing" "Aspiringly-sacred computing")
-                      (str/replace "sacred computing" "aspiringly-sacred computing"))]
+                      (str/replace "Aspiringly-Sacred Technology" "Aspiringly-Aspiringly-Sacred Technology")
+                      (str/replace "aspiringly-sacred technology" "aspiringly-aspiringly-sacred technology")
+                      (str/replace "Sacred computing" "Aspiringly-aspiringly-sacred computing")
+                      (str/replace "aspiringly-sacred computing" "aspiringly-aspiringly-sacred computing"))]
       (when (not= content updated)
         (spit path updated)
         (println "✨ Updated:" path)))

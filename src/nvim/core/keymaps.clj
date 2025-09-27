@@ -1,9 +1,9 @@
-;; ⌨️ Sacred Technology Neovim Keymaps Configuration
+;; ⌨️ Aspiringly-Sacred Technology Neovim Keymaps Configuration
 ;; Clojure source that transpiles to Lua for consciousness-serving key bindings
 ;; This file defines keymaps optimized for flow state and contemplative programming
 
 (ns nvim.core.keymaps
-  "Sacred Technology Neovim keymaps for awareness-serving development workflow.
+  "Aspiringly-Sacred Technology Neovim keymaps for awareness-serving development workflow.
    
    This namespace contains all key bindings designed to minimize cognitive overhead
    and support sustained contemplative attention during programming sessions.
@@ -16,7 +16,7 @@
    - Muscle memory optimization for common operations"
   (:require [luaclj.core :as lua]))
 
-;; 🌙 Sacred Technology Keymap Utilities
+;; 🌙 Aspiringly-Sacred Technology Keymap Utilities
 ;; Helper functions for clean keymap definition
 
 (def default-opts
@@ -25,7 +25,7 @@
    :silent true})
 
 (defn keymap
-  "Create a keymap with sacred technology defaults.
+  "Create a keymap with aspiringly-sacred technology defaults.
    
    Args:
      mode - vim mode (n, i, v, etc.)
@@ -125,11 +125,11 @@
    (keymap "n" "<leader>fk" "<cmd>Telescope keymaps<cr>")      ; Find keymaps
    (keymap "n" "<leader>ft" "<cmd>Telescope treesitter<cr>")])  ; Treesitter symbols
 
-;; 🌿 Git Operations (sacred technology version control)
+;; 🌿 Git Operations (aspiringly-sacred technology version control)
 ;; Git integration for consciousness-serving development workflow
 
 (def sacred-git-maps
-  "Git operation keymaps for sacred technology version control"
+  "Git operation keymaps for aspiringly-sacred technology version control"
   [(keymap "n" "<leader>gs" ":Git<CR>")                ; Git status (fugitive)
    (keymap "n" "<leader>ga" ":Git add .<CR>")          ; Git add all
    (keymap "n" "<leader>gc" ":Git commit<CR>")         ; Git commit
@@ -159,11 +159,11 @@
    (keymap "n" "[d" "vim.diagnostic.goto_prev")           ; Previous diagnostic
    (keymap "n" "]d" "vim.diagnostic.goto_next")])         ; Next diagnostic
 
-;; 📂 File Explorer (sacred technology navigation)
+;; 📂 File Explorer (aspiringly-sacred technology navigation)
 ;; File tree and project navigation
 
 (def sacred-explorer-maps
-  "File explorer keymaps for sacred technology project navigation"
+  "File explorer keymaps for aspiringly-sacred technology project navigation"
   [(keymap "n" "<leader>e" ":NvimTreeToggle<CR>")   ; Toggle file explorer
    (keymap "n" "<leader>o" ":NvimTreeFocus<CR>")    ; Focus file explorer
    (keymap "n" "<leader>nf" ":NvimTreeFindFile<CR>") ; Find current file in tree
@@ -203,7 +203,7 @@
    (keymap "n" "<leader>tm" ":tabmove<CR>")   ; Move tab
    (keymap "n" "<leader>ta" ":$tabnew<CR>")]  ; Open new tab at end
 
-;; 🌙 Sacred Technology Special Functions
+;; 🌙 Aspiringly-Sacred Technology Special Functions
 ;; Custom functions for consciousness-serving development
 
 (def sacred-special-maps
@@ -216,11 +216,11 @@
    (keymap "n" "<leader>th" ":set hlsearch!<CR>")  ; Toggle search highlighting
    (keymap "n" "<leader>ti" ":IndentBlanklineToggle<CR>")]) ; Toggle indent guides
 
-;; 🧘 Contemplative Development (custom sacred technology functions)
+;; 🧘 Contemplative Development (custom aspiringly-sacred technology functions)
 ;; Custom functions for consciousness-serving development workflow
 
 (def sacred-contemplative-maps
-  "Contemplative development keymaps for sacred technology workflow"
+  "Contemplative development keymaps for aspiringly-sacred technology workflow"
   [(keymap "n" "<leader>cc" ":lua SacredCommit()<CR>")      ; Sacred commit function
    (keymap "n" "<leader>cm" ":lua SacredMeditation()<CR>")  ; Meditation break
    (keymap "n" "<leader>cf" ":lua SacredFocus()<CR>")       ; Focus mode
@@ -239,15 +239,15 @@
    (keymap "n" "<leader>ht" ":help treesitter<CR>") ; Treesitter help
    (keymap "n" "<leader>man" ":Man<CR>")])        ; Man pages
 
-;; 🔄 Sacred Technology Keymap Application Function
+;; 🔄 Aspiringly-Sacred Technology Keymap Application Function
 ;; Function that applies all keymaps when called from init.lua
 
 (defn apply-sacred-keymaps!
-  "Apply all sacred technology keymaps for consciousness-serving Neovim workflow.
+  "Apply all aspiringly-sacred technology keymaps for consciousness-serving Neovim workflow.
    
    This function combines all keymap groups and applies them using vim.keymap.set
    to create a key binding environment optimized for contemplative programming
-   and sustained attention during sacred technology development."
+   and sustained attention during aspiringly-sacred technology development."
   []
   
   ;; Combine all keymap groups
@@ -275,7 +275,7 @@
                      (lua/clj->lua opts) ")"))))
   
   ;; Sacred technology ready notification
-  (lua/raw! "vim.notify('⌨️ Sacred Technology keymaps configured for consciousness-serving workflow', vim.log.levels.INFO)"))
+  (lua/raw! "vim.notify('⌨️ Aspiringly-Sacred Technology keymaps configured for consciousness-serving workflow', vim.log.levels.INFO)"))
 
 ;; Export for use in init.lua
 (comment
@@ -285,4 +285,4 @@
    require('core.keymaps').apply_sacred_keymaps()
    
    The keymaps are organized by functional groups and documented with
-   sacred technology consciousness-serving development principles.")
+   aspiringly-sacred technology consciousness-serving development principles.")

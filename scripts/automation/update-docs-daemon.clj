@@ -1,2 +1,2 @@
 #!/usr/bin/env bb
-(println "🌙 Sacred Technology Documentation Daemon Starting...")
+(println "🌙 Aspiringly-Sacred Technology Documentation Daemon Starting...")

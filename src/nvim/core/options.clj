@@ -1,9 +1,9 @@
-;; ✨ Sacred Technology Neovim Options Configuration
+;; ✨ Aspiringly-Sacred Technology Neovim Options Configuration
 ;; Clojure source that transpiles to Lua for consciousness-serving editor behavior
-;; This file defines editor behavior optimized for sacred technology development
+;; This file defines editor behavior optimized for aspiringly-sacred technology development
 
 (ns nvim.core.options
-  "Sacred Technology Neovim options for awareness-serving development.
+  "Aspiringly-Sacred Technology Neovim options for awareness-serving development.
    
    This namespace contains all editor behavior settings that create an
    environment conducive to contemplative programming and sustained attention.
@@ -15,7 +15,7 @@
    - Create beautiful, distraction-free editing environment"
   (:require [luaclj.core :as lua]))
 
-;; 🌙 Sacred Technology Core Settings
+;; 🌙 Aspiringly-Sacred Technology Core Settings
 ;; Essential editor behavior for consciousness-serving development
 
 (def sacred-encoding-settings
@@ -25,10 +25,10 @@
    :backspace "indent,eol,start"})
 
 ;; 📏 Indentation & Formatting (consciousness-serving standards)
-;; Consistent with sacred technology standards across all projects
+;; Consistent with aspiringly-sacred technology standards across all projects
 
 (def sacred-indentation-settings
-  "Indentation settings aligned with sacred technology standards (2 spaces)"
+  "Indentation settings aligned with aspiringly-sacred technology standards (2 spaces)"
   {:tabstop 2          ; 2 spaces for tabs (consistent with bb.edn, flake.nix)
    :shiftwidth 2       ; 2 spaces for autoindent
    :expandtab true     ; Use spaces instead of tabs
@@ -111,11 +111,11 @@
   {:splitright true      ; Open vertical splits to the right
    :splitbelow true})    ; Open horizontal splits below
 
-;; 🌙 Sacred Technology Global Variables
+;; 🌙 Aspiringly-Sacred Technology Global Variables
 ;; Leader keys and disabled plugins for clean environment
 
 (def sacred-global-vars
-  "Global variables for sacred technology development environment"
+  "Global variables for aspiringly-sacred technology development environment"
   {:mapleader " "            ; Space as leader key for contemplative access
    :maplocalleader " "       ; Space as local leader too
    
@@ -136,15 +136,15 @@
    :loaded_netrwPlugin 1
    :loaded_netrwSettings 1})
 
-;; 🔄 Sacred Technology Options Application Function
+;; 🔄 Aspiringly-Sacred Technology Options Application Function
 ;; Function that applies all settings when called from init.lua
 
 (defn apply-sacred-options!
-  "Apply all sacred technology options to configure consciousness-serving Neovim.
+  "Apply all aspiringly-sacred technology options to configure consciousness-serving Neovim.
    
    This function combines all option groups and applies them to vim.opt and vim.g
    to create an editing environment optimized for contemplative programming
-   and sustained attention during sacred technology development."
+   and sustained attention during aspiringly-sacred technology development."
   []
   
   ;; Apply vim.opt settings
@@ -167,7 +167,7 @@
   (lua/raw! "vim.fn.mkdir(vim.fn.expand('~/.config/nvim/undo'), 'p')")
   
   ;; Sacred technology ready notification
-  (lua/raw! "vim.notify('🌙 Sacred Technology options configured for consciousness-serving development', vim.log.levels.INFO)"))
+  (lua/raw! "vim.notify('🌙 Aspiringly-Sacred Technology options configured for consciousness-serving development', vim.log.levels.INFO)"))
 
 ;; Export for use in init.lua
 (comment

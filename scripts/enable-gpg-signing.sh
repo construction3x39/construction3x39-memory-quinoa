@@ -1,8 +1,8 @@
 #!/bin/bash
-# 🔐 Enable GPG signing for sacred technology development
+# 🔐 Enable GPG signing for aspiringly-sacred technology development
 # Quick activation script for construction3x39-memory-gnupg-config
 
-echo "🔐 Enabling GPG signing for sacred technology development..."
+echo "🔐 Enabling GPG signing for aspiringly-sacred technology development..."
 
 # Enable GPG signing globally
 git config --global commit.gpgsign true

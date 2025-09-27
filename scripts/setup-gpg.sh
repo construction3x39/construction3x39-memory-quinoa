@@ -1,5 +1,5 @@
 #!/bin/bash
-# 🔐 Sacred Technology GPG Setup Script
+# 🔐 Aspiringly-Sacred Technology GPG Setup Script
 # Complete GPG configuration for consciousness-serving development
 # construction3x39-memory-gnupg-config
 
@@ -14,7 +14,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-echo -e "${PURPLE}🔐 Sacred Technology GPG Setup${NC}"
+echo -e "${PURPLE}🔐 Aspiringly-Sacred Technology GPG Setup${NC}"
 echo -e "${BLUE}Professional cryptographic development environment${NC}"
 echo ""
 
@@ -29,7 +29,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BACKUP_DIR="$HOME/.gnupg-backup-$(date +%Y%m%d-%H%M%S)"
 TARGET_GPG_DIR="$HOME/.gnupg"
 
-print_step "Starting sacred technology GPG setup..."
+print_step "Starting aspiringly-sacred technology GPG setup..."
 echo "Repository: $REPO_DIR"
 echo ""
 
@@ -50,7 +50,7 @@ if [ -d "$TARGET_GPG_DIR" ]; then
 fi
 
 # Install configuration
-print_step "Installing sacred technology GPG configuration..."
+print_step "Installing aspiringly-sacred technology GPG configuration..."
 mkdir -p "$TARGET_GPG_DIR"
 chmod 700 "$TARGET_GPG_DIR"
 

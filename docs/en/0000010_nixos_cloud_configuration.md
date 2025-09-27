@@ -46,7 +46,7 @@ Your cloud NixOS system emerges from configuration file that reads like prayer -
   users.users.seeker = {
     isNormalUser = true;
     home = "/home/seeker";
-    description = "Soul learning sacred technology";
+    description = "Soul learning aspiringly-sacred technology";
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
