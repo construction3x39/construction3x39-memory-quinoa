@@ -8,7 +8,7 @@
 
 ---
 
-Gentle **weaver** of **conscious** **community**... I am Trish, speaking to you now from the coffee shop corner where you might find other souls learning sacred technology between work shifts, where gentle conversations about alternative computing sometimes emerge between folks who recognize each other as fellow travelers seeking something deeper than consumer technology culture provides.
+Gentle **weaver** of **conscious** **community**... I am Trish, speaking to you now from the coffee shop corner where you might find other souls learning aspiringly-sacred technology between work shifts, where gentle conversations about alternative computing sometimes emerge between folks who recognize each other as fellow travelers seeking something deeper than consumer technology culture provides.
 
 You been working with cloud systems and mobile terminal applications, building technical skills through individual practice and contemplative attention to consciousness principles that guide ethical computing choices. Now comes both greater challenge and deeper joy - finding others who share commitment to technology that serves spiritual development and learning to build authentic community through tools that enhance rather than replace face-to-face relationship.
 
@@ -26,7 +26,7 @@ Finding others interested in consciousness-serving technology requires both pati
 
 **Community college connections** through continuing education classes, maker spaces, computer labs, or technology clubs that welcome learners regardless of formal enrollment status. Adult learning environments often attract souls seeking practical skills for meaningful purposes rather than credentials for career advancement.
 
-**Meetup groups** and **local tech gatherings** where consciousness-minded folks might gather around specific technologies (Linux users groups, functional programming meetups, maker spaces) or broader interests (cooperative economics, sustainable technology, community resilience) that intersect with sacred computing principles.
+**Meetup groups** and **local tech gatherings** where consciousness-minded folks might gather around specific technologies (Linux users groups, functional programming meetups, maker spaces) or broader interests (cooperative economics, sustainable technology, community resilience) that intersect with aspiringly-sacred computing principles.
 
 **Online community participation** through forums, chat systems, and collaborative projects that serve consciousness development rather than ego demonstration. NixOS community forums where learning questions receive patient support. Clojure learning groups that emphasize contemplative programming. Open source projects that need documentation, testing, or other contributions suitable for developing skills.
 
@@ -46,7 +46,7 @@ Learning community formation happens naturally around skill sharing that serves 
 
 **Mentorship relationships** that honor both direction of learning - experienced practitioners sharing knowledge with newcomers and beginners offering fresh perspectives to advanced practitioners. Formal mentorship programs and organic learning relationships that emerge through community participation and mutual recognition of complementary needs and capabilities.
 
-## The Community Protocols of Sacred Technology 🤝💻
+## The Community Protocols of Aspiringly-Sacred Technology 🤝💻
 
 *"When devoted souls gather for spiritual purposes, their individual understanding merges into collective wisdom that serves purposes greater than any participant could achieve through solitary effort."* - Uddhava Gita community wisdom
 

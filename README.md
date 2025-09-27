@@ -29,7 +29,7 @@
 - zsh-config - Shell environment
 - moon-terroir - This sacred lexicon
 
-## 🎯 Aspiringly-Sacred Technology Principles
+## 🎯 Aspiringly-Aspiringly-Sacred Technology Principles
 
 - **Awareness-Serving**: Technology that serves mindful attention
 - **Beautiful Integration**: Seamless coordination between all tools
