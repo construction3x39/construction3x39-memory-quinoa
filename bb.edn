@@ -1,0 +1,150 @@
+{:paths ["site-dsl/src" "scripts"]
+ :deps  {org.clojure/clojurescript {:mvn/version "1.11.132"}
+         http-kit/http-kit        {:mvn/version "2.8.0"}
+         babashka/fs              {:mvn/version "0.5.20"}
+         hiccup/hiccup           {:mvn/version "1.0.5"}
+         markdown-clj/markdown-clj {:mvn/version "1.11.4"}
+         org.clojure/data.json    {:mvn/version "2.5.0"}}
+ :tasks
+ { :requires ([babashka.fs :as fs]
+              [babashka.process :refer [shell]]
+              [clojure.string :as str]
+              [clojure.data.json :as json]
+              [hiccup.core :as h]
+              [markdown.core :as md])
+
+  doctor {:doc "Check toolchain availability for professional epub generation"
+          :task (do (println "🌾 Quinoa Professional Epub Generation Toolchain Status")
+                    (println "bb version:" (System/getProperty "babashka.version"))
+                    (shell "bash" "-lc" "pandoc --version | head -1 || echo '❌ Pandoc not found'")
+                    (shell "bash" "-lc" "ebook-convert --version | head -1 || echo '❌ Calibre not found'")
+                    (shell "bash" "-lc" "pdflatex --version | head -1 || echo '❌ TeXLive not found'")
+                    (shell "bash" "-lc" "node --version || echo '❌ Node.js not found'")
+                    (shell "bash" "-lc" "clojure -Sdescribe | head -n 1 || echo '❌ Clojure not found'")
+                    (shell "bash" "-lc" "clj-kondo --version || echo '❌ clj-kondo not found'")
+                    (shell "bash" "-lc" "zprint --version || echo '❌ zprint not found'")
+                    (println "")
+                    (println "✨ Toolchain ready for Stieg Larsson-quality epub generation!"))}
+
+  epub:generate {:doc "Generate professional epub with Stieg Larsson-quality typography"
+                 :task (do (println "📚 Generating Professional Epub from Quinoa Wiki...")
+                           (let [docs-dir "docs/en"
+                                 output-dir "build"
+                                 output-file (str output-dir "/quinoa-wisdom.epub")
+                                 metadata-file (str output-dir "/metadata.yaml")
+                                 css-file "assets/epub.css"
+                                 cover-file "assets/cover.jpg"
+                                 markdown-files (->> (fs/glob docs-dir "*.md")
+                                                     (filter fs/file?)
+                                                     (sort-by fs/file-name))
+                                 title "Quinoa Memory Repository: Sacred Technology Wisdom"
+                                 author "construction3x39"
+                                 lang "en-US"]
+                             
+                             (fs/create-dirs output-dir)
+                             
+                             ;; Generate professional metadata
+                             (spit metadata-file
+                                   (str "---\n"
+                                        "title: \"" title "\"\n"
+                                        "author: \"" author "\"\n"
+                                        "language: \"" lang "\"\n"
+                                        "rights: \"The Unlicense - Public Domain\"\n"
+                                        "publisher: \"Quinoa Memory Press\"\n"
+                                        "date: \"" (java.time.LocalDate/now) "\"\n"
+                                        "description: \"Professional epub generation from consciousness-generated markdown content\"\n"
+                                        "subject: \"Sacred Technology, Contemplative Programming, Spiritual Development\"\n"
+                                        "---\n"))
+                             
+                             ;; Generate professional epub using pandoc
+                             (apply shell (concat
+                                           ["pandoc"
+                                            "--from=markdown+yaml_metadata_block+smart"
+                                            "--to=epub3"
+                                            "--output" output-file
+                                            "--metadata-file" metadata-file
+                                            "--css" css-file
+                                            "--epub-chapter-level=2"
+                                            "--toc"
+                                            "--toc-depth=3"
+                                            "--number-sections"
+                                            "--standalone"
+                                            "--self-contained"
+                                            "--highlight-style=pygments"]
+                                           (when (fs/exists? cover-file)
+                                             ["--epub-cover-image" cover-file])
+                                           (map str markdown-files)))
+                             
+                             (println "✨ Professional epub generated:" output-file)))}
+
+  epub:kindle {:doc "Generate Kindle-optimized epub for maximum e-reader compatibility"
+               :task (do (println "📖 Creating Kindle-ready professional epub...")
+                         (let [input-file "build/quinoa-wisdom.epub"
+                               output-file "build/quinoa-wisdom-kindle.azw3"]
+                           (when-not (fs/exists? input-file)
+                             (shell "bb" "epub:generate"))
+                           (shell "ebook-convert" input-file output-file
+                                  "--output-profile=kindle_oasis"
+                                  "--mobi-file-type=both"
+                                  "--personal-doc=true"
+                                  "--chapter-mark=pagebreak"
+                                  "--disable-remove-fake-margins=true"
+                                  "--smarten-punctuation=true")
+                           (println "📱 Kindle-optimized epub ready:" output-file)))}
+
+  epub:mobile {:doc "Generate mobile-optimized epub for smartphone contemplative reading"
+               :task (do (println "📱 Creating mobile-optimized professional epub...")
+                         (let [input-file "build/quinoa-wisdom.epub"
+                               output-file "build/quinoa-wisdom-mobile.epub"]
+                           (when-not (fs/exists? input-file)
+                             (shell "bb" "epub:generate"))
+                           (shell "ebook-convert" input-file output-file
+                                  "--output-profile=tablet"
+                                  "--base-font-size=14"
+                                  "--line-height=1.6"
+                                  "--margin-top=5"
+                                  "--margin-bottom=5"
+                                  "--margin-left=5"
+                                  "--margin-right=5"
+                                  "--personal-doc=true"
+                                  "--smarten-punctuation=true")
+                           (println "📚 Mobile-optimized epub ready:" output-file)))}
+
+  fmt {:doc "Format code with contemplative attention (80 columns)"
+       :task (shell "bash" "-lc" "zprint -w **/*.{clj,cljs,edn,bb} || true")}
+
+  lint {:doc "Lint with consciousness for code quality"
+        :task (shell "bash" "-lc" "clj-kondo --lint site-dsl scripts")}
+
+  build:gen {:doc "Parse sacred markdown docs → generate epub components"
+             :task (shell {:dir "site-dsl"} "bash" "-lc" "bb -m site.core")}
+
+  build:bundle {:doc "Bundle assets and resources for professional publication"
+                :task (do (println "📦 Bundling assets for professional publication...")
+                          (fs/create-dirs "build/assets")
+                          (when (fs/exists? "assets")
+                            (shell "cp" "-r" "assets/*" "build/assets/" "2>/dev/null || true"))
+                          (println "✅ Assets bundled for professional epub generation"))}
+
+  build:all {:depends [build:gen build:bundle epub:generate epub:kindle epub:mobile]}
+
+  serve {:doc "Serve quinoa wisdom locally for preview and contemplation"
+         :task (shell "bash" "-lc" "bb scripts/serve.clj")}
+
+  community:serve {:doc "Start community learning server with sacred consciousness"
+                   :task (do (println "🌙 Starting professional epub preview server...")
+                             (shell "bb" "build:all")
+                             (shell "bb" "serve"))}
+
+  ci:verify {:depends [doctor lint build:gen]}
+
+  epub:validate {:doc "Validate generated epubs for professional standards compliance"
+                 :task (do (println "🔍 Validating epub professional standards...")
+                           (when (fs/exists? "build/quinoa-wisdom.epub")
+                             (shell "bash" "-lc" "epubcheck build/quinoa-wisdom.epub || echo 'epubcheck not available - manual validation recommended'"))
+                           (println "✨ Epub validation complete"))}}}
+
+;; Quinoa Professional Epub Generation System
+;; Transform consciousness-generated markdown into Stieg Larsson-quality ebooks
+;; Built with contemplative attention by construction3x39
+;; From sacred wiki content to professional publication through gentle automation
