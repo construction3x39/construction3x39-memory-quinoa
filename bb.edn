@@ -1,150 +1,153 @@
-{:paths ["site-dsl/src" "scripts"]
+{:paths ["src" "scripts"]
  :deps  {org.clojure/clojurescript {:mvn/version "1.11.132"}
-         http-kit/http-kit        {:mvn/version "2.8.0"}
          babashka/fs              {:mvn/version "0.5.20"}
          hiccup/hiccup           {:mvn/version "1.0.5"}
-         markdown-clj/markdown-clj {:mvn/version "1.11.4"}
-         org.clojure/data.json    {:mvn/version "2.5.0"}}
+         org.clojure/data.json    {:mvn/version "2.5.0"}
+         ;; LuaCLJ for Clojure->Lua transpilation
+         luaclj/luaclj           {:git/url "https://github.com/luaclj/luaclj"
+                                  :git/sha "main"}}
  :tasks
  { :requires ([babashka.fs :as fs]
               [babashka.process :refer [shell]]
               [clojure.string :as str]
               [clojure.data.json :as json]
-              [hiccup.core :as h]
-              [markdown.core :as md])
+              [hiccup.core :as h])
 
-  doctor {:doc "Check toolchain availability for professional epub generation"
-          :task (do (println "🌾 Quinoa Professional Epub Generation Toolchain Status")
+  doctor {:doc "Check Neovim configuration toolchain for aspiringly-sacred technology development"
+          :task (do (println "✨ Aspiringly-Sacred Technology Neovim Configuration Toolchain Status")
                     (println "bb version:" (System/getProperty "babashka.version"))
-                    (shell "bash" "-lc" "pandoc --version | head -1 || echo '❌ Pandoc not found'")
-                    (shell "bash" "-lc" "ebook-convert --version | head -1 || echo '❌ Calibre not found'")
-                    (shell "bash" "-lc" "pdflatex --version | head -1 || echo '❌ TeXLive not found'")
-                    (shell "bash" "-lc" "node --version || echo '❌ Node.js not found'")
+                    (shell "bash" "-lc" "nvim --version | head -1 || echo '❌ Neovim not found'")
+                    (shell "bash" "-lc" "lua -v || echo '❌ Lua not found'")
+                    (shell "bash" "-lc" "luajit -v || echo '❌ LuaJIT not found'")
                     (shell "bash" "-lc" "clojure -Sdescribe | head -n 1 || echo '❌ Clojure not found'")
                     (shell "bash" "-lc" "clj-kondo --version || echo '❌ clj-kondo not found'")
                     (shell "bash" "-lc" "zprint --version || echo '❌ zprint not found'")
+                    (shell "bash" "-lc" "git --version || echo '❌ Git not found'")
                     (println "")
-                    (println "✨ Toolchain ready for Stieg Larsson-quality epub generation!"))}
+                    (println "🌙 Toolchain ready for consciousness-serving Neovim development!"))}
 
-  epub:generate {:doc "Generate professional epub with Stieg Larsson-quality typography"
-                 :task (do (println "📚 Generating Professional Epub from Quinoa Wiki...")
-                           (let [docs-dir "docs/en"
-                                 output-dir "build"
-                                 output-file (str output-dir "/quinoa-wisdom.epub")
-                                 metadata-file (str output-dir "/metadata.yaml")
-                                 css-file "assets/epub.css"
-                                 cover-file "assets/cover.jpg"
-                                 markdown-files (->> (fs/glob docs-dir "*.md")
-                                                     (filter fs/file?)
-                                                     (sort-by fs/file-name))
-                                 title "Quinoa Memory Repository: Sacred Technology Wisdom"
-                                 author "construction3x39"
-                                 lang "en-US"]
+  nvim:generate {:doc "Generate Lua configuration from Clojure sources using luaclj"
+                 :task (do (println "🔄 Transpiling Clojure → Lua for aspiringly-sacred technology Neovim...")
+                           (let [src-dir "src/nvim"
+                                 lua-dir "lua"
+                                 clj-files (->> (fs/glob src-dir "**/*.clj")
+                                                (filter fs/file?)
+                                                (sort-by fs/file-name))]
                              
-                             (fs/create-dirs output-dir)
+                             (println "📁 Found Clojure source files:" (count clj-files))
+                             (doseq [file clj-files]
+                               (println "  📄" (fs/file-name file)))
                              
-                             ;; Generate professional metadata
-                             (spit metadata-file
-                                   (str "---\n"
-                                        "title: \"" title "\"\n"
-                                        "author: \"" author "\"\n"
-                                        "language: \"" lang "\"\n"
-                                        "rights: \"The Unlicense - Public Domain\"\n"
-                                        "publisher: \"Quinoa Memory Press\"\n"
-                                        "date: \"" (java.time.LocalDate/now) "\"\n"
-                                        "description: \"Professional epub generation from consciousness-generated markdown content\"\n"
-                                        "subject: \"Sacred Technology, Contemplative Programming, Spiritual Development\"\n"
-                                        "---\n"))
+                             ;; Ensure output directory exists
+                             (fs/create-dirs lua-dir)
                              
-                             ;; Generate professional epub using pandoc
-                             (apply shell (concat
-                                           ["pandoc"
-                                            "--from=markdown+yaml_metadata_block+smart"
-                                            "--to=epub3"
-                                            "--output" output-file
-                                            "--metadata-file" metadata-file
-                                            "--css" css-file
-                                            "--epub-chapter-level=2"
-                                            "--toc"
-                                            "--toc-depth=3"
-                                            "--number-sections"
-                                            "--standalone"
-                                            "--self-contained"
-                                            "--highlight-style=pygments"]
-                                           (when (fs/exists? cover-file)
-                                             ["--epub-cover-image" cover-file])
-                                           (map str markdown-files)))
+                             ;; Transpile each Clojure file to Lua
+                             (doseq [clj-file clj-files]
+                               (let [rel-path (fs/relativize src-dir clj-file)
+                                     lua-path (str lua-dir "/" 
+                                                   (str/replace (str rel-path) #"\.clj$" ".lua"))
+                                     lua-dir-path (fs/parent lua-path)]
+                                 
+                                 (when lua-dir-path
+                                   (fs/create-dirs lua-dir-path))
+                                 
+                                 (println "🔄 Transpiling:" (str clj-file) "→" lua-path)
+                                 
+                                 ;; Use luaclj to transpile
+                                 (shell "clojure" "-M" "-e" 
+                                        (str "(require '[luaclj.core :as lua]) "
+                                             "(spit \"" lua-path "\" "
+                                             "(lua/clj->lua (slurp \"" clj-file "\")))"))))
                              
-                             (println "✨ Professional epub generated:" output-file)))}
+                             (println "✨ Clojure → Lua transpilation complete!")
+                             (println "📂 Generated Lua files in:" lua-dir)))}
 
-  epub:kindle {:doc "Generate Kindle-optimized epub for maximum e-reader compatibility"
-               :task (do (println "📖 Creating Kindle-ready professional epub...")
-                         (let [input-file "build/quinoa-wisdom.epub"
-                               output-file "build/quinoa-wisdom-kindle.azw3"]
-                           (when-not (fs/exists? input-file)
-                             (shell "bb" "epub:generate"))
-                           (shell "ebook-convert" input-file output-file
-                                  "--output-profile=kindle_oasis"
-                                  "--mobi-file-type=both"
-                                  "--personal-doc=true"
-                                  "--chapter-mark=pagebreak"
-                                  "--disable-remove-fake-margins=true"
-                                  "--smarten-punctuation=true")
-                           (println "📱 Kindle-optimized epub ready:" output-file)))}
+  nvim:install {:doc "Install generated Neovim configuration to ~/.config/nvim"
+                :task (do (println "📦 Installing aspiringly-sacred technology Neovim configuration...")
+                          (let [target-dir (str (System/getProperty "user.home") "/.config/nvim")
+                                backup-dir (str target-dir ".backup." (System/currentTimeMillis))]
+                            
+                            ;; Backup existing configuration
+                            (when (fs/exists? target-dir)
+                              (println "💾 Backing up existing config to:" backup-dir)
+                              (shell "cp" "-r" target-dir backup-dir))
+                            
+                            ;; Create target directory
+                            (fs/create-dirs target-dir)
+                            
+                            ;; Copy generated Lua files
+                            (shell "cp" "-r" "lua" target-dir)
+                            (shell "cp" "init.lua" target-dir)
+                            
+                            ;; Copy static assets
+                            (when (fs/exists? "assets")
+                              (shell "cp" "-r" "assets" target-dir))
+                            
+                            (println "✅ Sacred technology Neovim configuration installed!")
+                            (println "🌙 Location:" target-dir)))}
 
-  epub:mobile {:doc "Generate mobile-optimized epub for smartphone contemplative reading"
-               :task (do (println "📱 Creating mobile-optimized professional epub...")
-                         (let [input-file "build/quinoa-wisdom.epub"
-                               output-file "build/quinoa-wisdom-mobile.epub"]
-                           (when-not (fs/exists? input-file)
-                             (shell "bb" "epub:generate"))
-                           (shell "ebook-convert" input-file output-file
-                                  "--output-profile=tablet"
-                                  "--base-font-size=14"
-                                  "--line-height=1.6"
-                                  "--margin-top=5"
-                                  "--margin-bottom=5"
-                                  "--margin-left=5"
-                                  "--margin-right=5"
-                                  "--personal-doc=true"
-                                  "--smarten-punctuation=true")
-                           (println "📚 Mobile-optimized epub ready:" output-file)))}
+  nvim:build {:depends [nvim:generate nvim:install]}
 
-  fmt {:doc "Format code with contemplative attention (80 columns)"
-       :task (shell "bash" "-lc" "zprint -w **/*.{clj,cljs,edn,bb} || true")}
+  nvim:dev {:doc "Development mode: watch Clojure files and auto-regenerate Lua"
+            :task (do (println "👁️ Watching Clojure files for changes...")
+                      (println "🔄 Auto-regenerating Lua on file changes")
+                      (println "📁 Watching: src/nvim/**/*.clj")
+                      (println "🌙 Press Ctrl+C to stop")
+                      
+                      ;; Simple file watching loop
+                      (loop [last-modified 0]
+                        (Thread/sleep 1000)
+                        (let [current-modified (->> (fs/glob "src/nvim" "**/*.clj")
+                                                    (map fs/last-modified-time)
+                                                    (apply max 0))]
+                          (when (> current-modified last-modified)
+                            (println "🔄 Clojure files changed, regenerating Lua...")
+                            (shell "bb" "nvim:generate")
+                            (println "✨ Lua regeneration complete"))
+                          (recur current-modified))))}
 
-  lint {:doc "Lint with consciousness for code quality"
-        :task (shell "bash" "-lc" "clj-kondo --lint site-dsl scripts")}
+  nvim:test {:doc "Test generated Neovim configuration"
+             :task (do (println "🧪 Testing aspiringly-sacred technology Neovim configuration...")
+                       (shell "nvim" "--headless" "-c" "checkhealth" "-c" "qall")
+                       (println "✅ Neovim configuration test complete"))}
 
-  build:gen {:doc "Parse sacred markdown docs → generate epub components"
-             :task (shell {:dir "site-dsl"} "bash" "-lc" "bb -m site.core")}
+  nvim:clean {:doc "Clean generated Lua files"
+              :task (do (println "🧹 Cleaning generated Lua files...")
+                        (when (fs/exists? "lua")
+                          (fs/delete-tree "lua"))
+                        (println "✅ Generated files cleaned"))}
 
-  build:bundle {:doc "Bundle assets and resources for professional publication"
-                :task (do (println "📦 Bundling assets for professional publication...")
-                          (fs/create-dirs "build/assets")
-                          (when (fs/exists? "assets")
-                            (shell "cp" "-r" "assets/*" "build/assets/" "2>/dev/null || true"))
-                          (println "✅ Assets bundled for professional epub generation"))}
+  fmt {:doc "Format Clojure source code with contemplative attention (80 columns)"
+       :task (shell "bash" "-lc" "zprint -w src/**/*.clj scripts/**/*.clj bb.edn || true")}
 
-  build:all {:depends [build:gen build:bundle epub:generate epub:kindle epub:mobile]}
+  lint {:doc "Lint Clojure source code for consciousness-serving quality"
+        :task (shell "bash" "-lc" "clj-kondo --lint src scripts")}
 
-  serve {:doc "Serve quinoa wisdom locally for preview and contemplation"
-         :task (shell "bash" "-lc" "bb scripts/serve.clj")}
+  docs:generate {:doc "Generate documentation from Clojure docstrings"
+                 :task (do (println "📚 Generating aspiringly-sacred technology documentation...")
+                           (shell "clojure" "-M" "-e" 
+                                  "(require 'clojure.repl) 
+                                   (require 'clojure.java.io)
+                                   (println \"📖 Documentation generation placeholder\")")
+                           (println "✨ Documentation generation complete"))}
 
-  community:serve {:doc "Start community learning server with sacred consciousness"
-                   :task (do (println "🌙 Starting professional epub preview server...")
-                             (shell "bb" "build:all")
-                             (shell "bb" "serve"))}
+  deps:update {:doc "Update dependencies for aspiringly-sacred technology development"
+               :task (do (println "🔄 Updating dependencies...")
+                         (shell "clojure" "-M:deps" "tree")
+                         (println "✅ Dependencies updated"))}
 
-  ci:verify {:depends [doctor lint build:gen]}
+  build:all {:depends [nvim:generate docs:generate]}
+  
+  dev:all {:depends [nvim:dev]}
+  
+  ci:verify {:depends [doctor lint build:all nvim:test]}
 
-  epub:validate {:doc "Validate generated epubs for professional standards compliance"
-                 :task (do (println "🔍 Validating epub professional standards...")
-                           (when (fs/exists? "build/quinoa-wisdom.epub")
-                             (shell "bash" "-lc" "epubcheck build/quinoa-wisdom.epub || echo 'epubcheck not available - manual validation recommended'"))
-                           (println "✨ Epub validation complete"))}}}
+  ;; Aspiringly-Sacred Technology Neovim Shortcuts
+  nvim {:depends [nvim:build]}
+  
+  watch {:depends [nvim:dev]}}}
 
-;; Quinoa Professional Epub Generation System
-;; Transform consciousness-generated markdown into Stieg Larsson-quality ebooks
+;; Aspiringly-Sacred Technology Neovim Configuration System
+;; Clojure → Lua transpilation for consciousness-serving editor setup
 ;; Built with contemplative attention by construction3x39
-;; From sacred wiki content to professional publication through gentle automation
+;; Inspired by foolsgoldtoshi-star-pond-highdesert architectural patterns

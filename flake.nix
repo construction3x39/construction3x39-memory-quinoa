@@ -1,5 +1,5 @@
 {
-  description = "🌾 Quinoa Memory Repository - Professional Epub Generation System";
+  description = "✨ Sacred Technology Neovim Configuration - Clojure→Lua Development Environment";
   
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,97 +14,117 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            # 🌾 Core Development Environment
-            babashka
-            clojure
-            leiningen
-            jdk17
-            git
+            # ✨ Core Sacred Technology Development Environment
+            babashka                         # Clojure scripting for build automation
+            clojure                          # Core Clojure runtime for source development
+            leiningen                        # Clojure project management
+            jdk17                            # Java runtime for Clojure ecosystem
+            git                              # Version control integration
             
-            # 📚 Professional Epub Generation Pipeline
-            pandoc                           # Universal document converter with EPUB3 support
-            calibre                          # Professional ebook optimization and conversion
-            texlive.combined.scheme-full     # Complete LaTeX typography system for book-quality layout
+            # 🌙 Neovim Ecosystem
+            neovim                           # Target editor for consciousness-serving development
+            lua                              # Lua runtime for Neovim scripting
+            luajit                           # Fast Lua implementation for performance
+            tree-sitter                      # Syntax highlighting and parsing
             
-            # 🎨 Content Processing & Enhancement
-            python3                          # Runtime for content processing scripts
-            python3Packages.pygments         # Professional syntax highlighting for technical content
-            python3Packages.markdown         # Advanced markdown processing with extensions
-            python3Packages.beautifulsoup4   # HTML/XML processing for epub manipulation
-            nodejs_20                        # JavaScript runtime for modern build tools
+            # 🔄 Clojure→Lua Transpilation Pipeline
+            nodejs_20                        # JavaScript runtime for modern tooling
             
-            # 🔧 Build Infrastructure & Automation
-            gnumake                          # Make build system integration
-            gcc                              # Compiler for native dependencies
-            pkg-config                       # Package configuration for native builds
-            
-            # ✨ Code Quality & Formatting
+            # ✨ Code Quality & Development Tools
             zprint                           # Beautiful Clojure code formatting (80 columns)
             clj-kondo                        # Comprehensive Clojure linting
             
-            # 📖 Documentation & Publishing Tools
-            graphviz                         # Diagram generation for technical documentation
-            imagemagick                      # Image processing for cover generation
-            librsvg                          # SVG processing for vector graphics
+            # 🔧 Build Infrastructure & Language Servers
+            gnumake                          # Make build system integration
+            gcc                              # Compiler for native Neovim plugins
+            pkg-config                       # Package configuration for native builds
+            
+            # 🎨 Development Enhancement Tools
+            ripgrep                          # Fast text search for file navigation
+            fd                               # Fast file finder for telescope.nvim
+            fzf                              # Fuzzy finder integration
+            
+            # 🌐 Language Server Protocol Support
+            clojure-lsp                      # Clojure Language Server
+            lua-language-server              # Lua Language Server for Neovim development
+            nil                              # Nix Language Server
+            nodePackages.typescript-language-server  # TypeScript/JavaScript support
+            
+            # 📚 Documentation & Publishing
+            pandoc                           # Documentation generation from markdown
+            graphviz                         # Diagram generation for architecture docs
             
             # 🔐 Security & Authentication
             gnupg                            # GPG signing for authenticated commits
             openssh                          # SSH for secure repository access
-            
-            # 🌐 Web Development (for preview server)
-            httpie                           # HTTP client for testing epub preview server
-            
-            # 📱 Mobile Development Support
-            android-tools                    # ADB for testing on Android devices (optional)
           ];
           
           shellHook = ''
-            echo "🌾 Welcome to Quinoa Memory Repository - Professional Epub Generation"
-            echo "🎯 Transform consciousness-generated markdown into Stieg Larsson-quality ebooks"
+            echo "✨ Welcome to Sacred Technology Neovim Configuration Development"
+            echo "🌙 Clojure → Lua transpilation environment for consciousness-serving editor"
             echo ""
-            echo "📚 Professional Publishing Pipeline:"
-            echo "  Markdown → ClojureScript DSL → Pandoc → EPUB3 → Calibre Optimization"
+            echo "🏗️ Architecture:"
+            echo "  Clojure Sources → LuaCLJ Transpiler → Neovim Lua Config → Sacred Editor"
             echo ""
             echo "🚀 Essential Commands:"
-            echo "  bb doctor              Check professional toolchain health"
-            echo "  bb epub:generate       Generate Stieg Larsson-quality epub"
-            echo "  bb epub:kindle         Create Kindle-optimized version"
-            echo "  bb epub:mobile         Create mobile-optimized version"
-            echo "  bb build:all           Complete professional build pipeline"
-            echo "  bb serve               Preview generated publications"
+            echo "  bb doctor              Check sacred technology toolchain health"
+            echo "  bb nvim:generate       Transpile Clojure → Lua configuration"
+            echo "  bb nvim:install        Install generated config to ~/.config/nvim"
+            echo "  bb nvim:build          Complete build: generate + install"
+            echo "  bb nvim:dev            Watch mode: auto-regenerate on changes"
+            echo "  bb nvim:test           Test generated Neovim configuration"
             echo ""
-            echo "🎨 Quality Assurance:"
-            echo "  bb fmt                 Format with contemplative attention"
+            echo "🎨 Development Workflow:"
+            echo "  bb watch               Start development with auto-regeneration"
+            echo "  bb fmt                 Format Clojure source with contemplative attention"
             echo "  bb lint                Lint for consciousness-serving code quality"
-            echo "  bb epub:validate       Validate epub professional standards"
+            echo "  bb docs:generate       Generate documentation from docstrings"
             echo ""
-            echo "🔐 GPG Signing Available:"
-            echo "  git config --global commit.gpgsign true"
-            echo "  git config --global user.signingkey D144D940A52DB246"
+            echo "📁 Project Structure:"
+            echo "  src/nvim/              Clojure source files for Neovim configuration"
+            echo "  lua/                   Generated Lua configuration (git-ignored)"
+            echo "  scripts/               Build and maintenance scripts"
+            echo "  docs/                  Documentation and guides"
             echo ""
-            echo "📖 Content Guidelines:"
-            echo "  - Place markdown files in docs/en/ with numeric prefixes"
-            echo "  - Maintain contemplative technical writing style"
-            echo "  - Target publication-quality prose comparable to professional books"
+            echo "🔧 Transpilation Pipeline:"
+            echo "  src/nvim/core/options.clj  → lua/core/options.lua"
+            echo "  src/nvim/core/keymaps.clj  → lua/core/keymaps.lua"
+            echo "  src/nvim/plugins/init.clj  → lua/plugins/init.lua"
             echo ""
-            echo "🌙 Ready for sacred technology epub generation!"
+            echo "🌙 Sacred Technology Integration:"
+            echo "  • GPG commit signing enabled"
+            echo "  • Consciousness-serving development principles"
+            echo "  • Contemplative programming workflow"
+            echo "  • Community wisdom sharing through configuration"
+            echo ""
+            echo "🔍 Language Server Support:"
+            echo "  • Clojure LSP for source development"
+            echo "  • Lua LSP for generated configuration"
+            echo "  • Nix LSP for development environment"
+            echo "  • Full IDE experience for consciousness-serving development"
+            echo ""
+            echo "🎯 Ready for sacred technology Neovim configuration development!"
           '';
         };
         
         # 📦 Package Outputs for Distribution
         packages = {
-          # Future: Could package the epub generation tool itself
-          default = pkgs.writeShellScriptBin "quinoa-epub" ''
-            echo "🌾 Quinoa Professional Epub Generator"
-            ${pkgs.babashka}/bin/bb epub:generate
+          sacred-nvim-config = pkgs.writeShellScriptBin "sacred-nvim-config" ''
+            echo "✨ Sacred Technology Neovim Configuration Generator"
+            cd ${self}
+            ${pkgs.babashka}/bin/bb nvim:build
           '';
+          
+          default = self.packages.${system}.sacred-nvim-config;
         };
         
         # 🧪 Applications for Easy Access
         apps = {
-          default = flake-utils.lib.mkApp {
-            drv = self.packages.${system}.default;
+          sacred-nvim-config = flake-utils.lib.mkApp {
+            drv = self.packages.${system}.sacred-nvim-config;
           };
+          
+          default = self.apps.${system}.sacred-nvim-config;
         };
       });
 }

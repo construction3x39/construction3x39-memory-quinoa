@@ -1,48 +1,113 @@
-# Third-Party Licenses - construction3x39-memory-gnupg-config
+# Third-Party Licenses - construction3x39-memory-nvim-config
 
-This document lists third-party software, libraries, and tools that this repository depends on or references, along with their respective licenses.
+This document lists third-party software, libraries, and tools that this Neovim configuration depends on or references, along with their respective licenses.
 
-## GPG (GNU Privacy Guard)
-- **Purpose**: Core cryptographic functionality
-- **Website**: https://gnupg.org/
-- **License**: GNU General Public License v3.0 (GPL-3.0)
-- **License URL**: https://www.gnu.org/licenses/gpl-3.0.html
-- **Usage**: Essential cryptographic operations for code signing and authentication
+## Neovim
+- **Purpose**: Core text editor and platform
+- **Website**: https://neovim.io/
+- **License**: Apache License 2.0
+- **License URL**: https://github.com/neovim/neovim/blob/master/LICENSE.txt
+- **Usage**: Primary text editing platform for consciousness-serving development
 
-## Git
-- **Purpose**: Version control system integration
-- **Website**: https://git-scm.com/
-- **License**: GNU General Public License v2.0 (GPL-2.0)
-- **License URL**: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-- **Usage**: Git commit signing and repository management
+## Plugin Dependencies
 
-## OpenPGP Key Servers
-- **Purpose**: Public key distribution and discovery
-- **Primary**: keys.openpgp.org
-- **License**: Various (server software typically AGPL/GPL)
-- **Usage**: Public key lookup and distribution for verification
+### lazy.nvim (Plugin Manager)
+- **Purpose**: Modern Neovim plugin manager
+- **Repository**: https://github.com/folke/lazy.nvim
+- **License**: Apache License 2.0
+- **Usage**: Plugin installation and management
 
-## Bash
-- **Purpose**: Shell scripting for automation
-- **Website**: https://www.gnu.org/software/bash/
-- **License**: GNU General Public License v3.0 (GPL-3.0)
-- **License URL**: https://www.gnu.org/licenses/gpl-3.0.html
-- **Usage**: Setup and maintenance scripts
+### nvim-treesitter
+- **Purpose**: Syntax highlighting and code parsing
+- **Repository**: https://github.com/nvim-treesitter/nvim-treesitter
+- **License**: Apache License 2.0
+- **Usage**: Advanced syntax highlighting and code understanding
 
-## Standard Unix/POSIX Tools
-- **Purpose**: Core system utilities (chmod, cp, mkdir, etc.)
-- **License**: Various (typically BSD, GPL, or public domain)
-- **Usage**: File system operations and system administration
+### telescope.nvim
+- **Purpose**: Fuzzy finder and file navigation
+- **Repository**: https://github.com/nvim-telescope/telescope.nvim
+- **License**: MIT License
+- **Usage**: File discovery and project navigation
+
+### nvim-lspconfig
+- **Purpose**: Language Server Protocol integration
+- **Repository**: https://github.com/neovim/nvim-lspconfig
+- **License**: Apache License 2.0
+- **Usage**: Intelligent code completion and error detection
+
+### fugitive.vim
+- **Purpose**: Git integration for Neovim
+- **Repository**: https://github.com/tpope/vim-fugitive
+- **License**: Vim License (GPL-compatible)
+- **Usage**: Professional Git workflow within editor
+
+### gitsigns.nvim
+- **Purpose**: Git status indicators
+- **Repository**: https://github.com/lewis6991/gitsigns.nvim
+- **License**: MIT License
+- **Usage**: Git change indicators in sign column
+
+### nvim-cmp
+- **Purpose**: Code completion engine
+- **Repository**: https://github.com/hrsh7th/nvim-cmp
+- **License**: MIT License
+- **Usage**: Intelligent autocompletion for development
+
+### lualine.nvim
+- **Purpose**: Status line configuration
+- **Repository**: https://github.com/nvim-lualine/lualine.nvim
+- **License**: MIT License
+- **Usage**: Beautiful status line with sacred technology theme
+
+### conjure
+- **Purpose**: Interactive Clojure development
+- **Repository**: https://github.com/Olical/conjure
+- **License**: The Unlicense (Public Domain)
+- **Usage**: Enhanced Clojure/ClojureScript REPL integration
+
+### parinfer-rust
+- **Purpose**: Structural editing for Lisp languages
+- **Repository**: https://github.com/eraserhd/parinfer-rust
+- **License**: ISC License
+- **Usage**: Intelligent parentheses management for Clojure
+
+## Language Servers
+- **clojure-lsp**: Eclipse Public License 1.0
+- **pylsp**: MIT License
+- **rust-analyzer**: Apache License 2.0 / MIT License
+- **typescript-language-server**: Apache License 2.0
+- **lua-language-server**: MIT License
+
+## Fonts & Typography
+- **JetBrains Mono**: SIL Open Font License 1.1
+- **Fira Code**: SIL Open Font License 1.1
+- **Source Code Pro**: SIL Open Font License 1.1
+- **Usage**: Monospace fonts optimized for code readability
+
+## Color Schemes & Themes
+- **Moonlight Theme**: Based on various MIT-licensed themes
+- **Sunrise Theme**: Custom adaptation of public domain color concepts
+- **Usage**: Consciousness-serving visual aesthetics
 
 ---
 
 ## License Compatibility
 
-This repository is released under **The Unlicense** (public domain dedication), which is compatible with all the above licenses. Users may freely use, modify, and distribute this configuration while respecting the licenses of the underlying tools it configures.
+This Neovim configuration is released under **The Unlicense** (public domain dedication), which is compatible with all the above licenses. Users may freely use, modify, and distribute this configuration while respecting the licenses of the individual plugins and tools it configures.
+
+## Installation Note
+
+This configuration acts as a coordinator for the above tools but does not redistribute their code. Users must install Neovim and plugins separately through their respective package managers and repositories.
 
 ## Acknowledgments
 
-We gratefully acknowledge the developers and maintainers of these essential tools that make secure, professional software development possible. Their contributions to open source software enable consciousness-serving technology development.
+We gratefully acknowledge the incredible Neovim community and plugin developers who make consciousness-serving development environments possible. Their dedication to open source software enables beautiful, efficient, and powerful text editing that serves awakening through technology.
+
+Special thanks to:
+- The Neovim core team for creating an extensible editor platform
+- Plugin developers who create tools that enhance rather than complicate workflow
+- The Clojure community for fostering contemplative programming practices
+- Theme designers who understand that aesthetics serve sustained attention
 
 ---
 
